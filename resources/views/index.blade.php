@@ -1,8 +1,17 @@
-Hello, Blade template
+<h1>
+    Hello, Blade template
+</h1
 
 
-@isset($name)
+<!-- цикл форелс сахар форич. Создание простого варианта ссылки на другую страницу, маршрут помещается внутрь блэйд синтаксиса.
+и передается необязательный 2 параметр. Здесь id из переданного в цикл массива. 
+Данная концепция подходит под нестатичное число параметров. Ежедневный список задач. -->
+
+<div>
     
-
-I'm {{$name}}
-@endisset
+    @forelse ($tasks as $task)
+        <a href="{{ route('tasks.show', ['id' => $task->id]) }}">{{ $task->title }}</a>
+    @empty
+        <div>There are not task</div>
+    @endforelse
+</div>
